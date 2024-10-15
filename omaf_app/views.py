@@ -7,7 +7,7 @@ def index(request):
 
 
 def register(request):
-    return HttpResponse("Registration page")
+    return render(request, 'omaf_app/register.html')
 
 def login(request):
     return HttpResponse("Login page")
