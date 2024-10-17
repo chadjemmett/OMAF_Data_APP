@@ -1,5 +1,5 @@
 from django.contrib import admin
-from omaf_app.models import School, Team
+from omaf_app.models import School, Team, Student
 
 # Register your models here.
 
@@ -33,10 +33,16 @@ class TeamAdmin(admin.ModelAdmin):
     list_editable = ["place"]
     ordering = ["category", "school", "team_name"]
 
+class StudentAdmin(admin.ModelAdmin):
+    list_display = [
+            "first_name",
+            "last_name"
+            ]
 
 
 
 admin.site.register(School, SchoolAdmin)
 admin.site.register(Team, TeamAdmin)
+admin.site.register(Student, StudentAdmin)
 
 

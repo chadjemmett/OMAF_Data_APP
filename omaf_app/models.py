@@ -61,4 +61,9 @@ class Team(models.Model):
     
     
 
-# Create your models here.
+class Student(models.Model):
+    first_name = models.CharField("First Name", max_length=256, blank=False)
+    last_name = models.CharField("Last Name", max_length=256, blank=False)
+
+
+
