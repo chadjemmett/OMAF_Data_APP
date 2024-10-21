@@ -62,8 +62,20 @@ class Team(models.Model):
     
 
 class Student(models.Model):
+    SHIRT_SIZE = {
+            "XS": "Extra Small",
+            "S": "Small",
+            "M": "Medium",
+            "L": "Large",
+            "XL": "Extra Large",
+            "XXL": "Extra X Large",
+            "NA": "No T-shirt",
+            }
     first_name = models.CharField("First Name", max_length=256, blank=False)
     last_name = models.CharField("Last Name", max_length=256, blank=False)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE, blank=True)
+    t_shirt = models.CharField("T-Shirt size", choices=SHIRT_SIZE, max_length=32, blank=True)
+
 
 
 
