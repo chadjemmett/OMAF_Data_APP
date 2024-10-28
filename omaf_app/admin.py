@@ -37,6 +37,8 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = [
             "first_name",
             "last_name",
+            "team__school",
+            "team__school__advisor_name",
             "t_shirt",
             ]
 
