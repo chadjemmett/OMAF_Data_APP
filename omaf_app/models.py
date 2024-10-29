@@ -20,6 +20,9 @@ class Advisor(models.Model):
     advisor_email = models.CharField("Advisor Email", max_length=256, blank=False)
     advisor_phone_number = models.CharField("Advisor Phone Number", max_length=256, blank=False)
 
+    def __str__(self):
+        return self.advisor_name
+
 
 class Team(models.Model):
     CATEGORIES = {

@@ -16,32 +16,31 @@ class SchoolAdmin(admin.ModelAdmin):
 class AdvisorAdmin(admin.ModelAdmin):
     list_display = [
             "advisor_name",
-            # "advisor_phone_number",
-            # "advisor_emergency_contact",
-            # "advisor_emergency_contact_phone",
+            "advisor_phone_number",
+            "school__school_name",
+            "school__principal"
             ]
-# class TeamAdmin(admin.ModelAdmin):
 
-#     list_display = [
-#             "category",
-#             "school",
-#             "team_name",
-#             "students",
-#             "place",
-#             "flash_drive",
-#             "school__advisor_name",
-#             "onsite_competition",
+class TeamAdmin(admin.ModelAdmin):
 
-#     ]
+    list_display = [
+            "category",
+            "advisor__school__school_name",
+            "team_name",
+            "place",
+            "advisor__advisor_name",
+            "onsite_competition",
 
-#     list_editable = ["place"]
-#     ordering = ["category", "school", "team_name"]
+    ]
+
+    list_editable = ["place"]
+    ordering = ["category", "advisor__school__school_name", "team_name"]
 
 
 
 
 admin.site.register(School, SchoolAdmin)
 admin.site.register(Advisor, AdvisorAdmin)
-# admin.site.register(Team, TeamAdmin)
+admin.site.register(Team, TeamAdmin)
 
 
