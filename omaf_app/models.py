@@ -5,8 +5,10 @@ class School(models.Model):
 
     school_name = models.CharField("School Name", max_length=256, blank=False, unique=True)
     district = models.CharField("District", max_length=256, blank=False)
-
     school_address = models.CharField("Address", max_length=256, blank=False)
+    principal = models.CharField("Principal Name", max_length=256, blank=False)
+    principal_phone = models.CharField("Emergency Contact Phone Number", max_length=256, blank=False)
+    
 
 
     def __str__(self):
@@ -17,9 +19,6 @@ class Advisor(models.Model):
     advisor_name = models.CharField("Advisor Name", max_length=256, blank=False)
     advisor_email = models.CharField("Advisor Email", max_length=256, blank=False)
     advisor_phone_number = models.CharField("Advisor Phone Number", max_length=256, blank=False)
-    advisor_emergency_contact = models.CharField("Emergency Contact", max_length=256, blank=False)
-    advisor_emergency_contact_phone = models.CharField("Emergency Contact Phone Number", max_length=256,
-            blank=False)
 
 
 class Team(models.Model):
@@ -49,13 +48,12 @@ class Team(models.Model):
             "3rd": "Third Place",
         }
     #belongs to
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    advisor = models.ForeignKey(Advisor, on_delete=models.CASCADE)
 
     team_name = models.CharField("Team Name", max_length=256, blank=False)
     onsite_competition = models.BooleanField(default=True)
     category = models.CharField(choices=CATEGORIES, blank=False, max_length=256)
     #will probably need a students model for tshirt size and conact information
-    students = models.TextField(max_length=512, blank=False)
     place = models.CharField(choices=PLACE, blank=True, max_length=256)
     flash_drive = models.CharField("Flash Drive Size", max_length=256)
 

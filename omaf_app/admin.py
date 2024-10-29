@@ -16,9 +16,9 @@ class SchoolAdmin(admin.ModelAdmin):
 class AdvisorAdmin(admin.ModelAdmin):
     list_display = [
             "advisor_name",
-            "advisor_phone_number",
-            "advisor_emergency_contact",
-            "advisor_emergency_contact_phone",
+            # "advisor_phone_number",
+            # "advisor_emergency_contact",
+            # "advisor_emergency_contact_phone",
             ]
 # class TeamAdmin(admin.ModelAdmin):
 
