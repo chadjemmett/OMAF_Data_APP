@@ -1,5 +1,5 @@
 from django.contrib import admin
-from omaf_app.models import School, Team, Advisor
+from omaf_app.models import School, Team, Advisor, Student
 
 # Register your models here.
 
@@ -39,8 +39,31 @@ class TeamAdmin(admin.ModelAdmin):
 
 
 
+class StudentAdmin(admin.ModelAdmin):
+    list_display = [
+            "student_name",
+            "shirt_size",
+            "team",
+            "advisor",
+            "school",
+
+            ]
+
+    @admin.display(description="Advisor")
+    def advisor(self, obj):
+        return f"{obj.team.advisor}"
+
+    @admin.display(description="Team")
+    def team(self, obj):
+        return f"{obj.team.team_name}"
+
+    @admin.display(description="School")
+    def school(self, obj):
+        return f"{obj.team.advisor.school.school_name}"
+
 admin.site.register(School, SchoolAdmin)
 admin.site.register(Advisor, AdvisorAdmin)
 admin.site.register(Team, TeamAdmin)
+admin.site.register(Student, StudentAdmin)
 
 

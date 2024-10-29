@@ -63,6 +63,19 @@ class Team(models.Model):
     def __str__(self):
         return self.team_name
     
+
+class Student(models.Model):
+    T_SHIRT_SIZES = {
+            "S": "Small",
+            "M": "Medium",
+            "L": "Large",
+            "XL": "X-Large",
+            "XXL": "XX-Large",
+            "N": "No T-shirt",
+            }
     
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    student_name = models.CharField("Student Name", max_length=256, blank=False)
+    shirt_size = models.CharField(choices=T_SHIRT_SIZES, blank=True, max_length=256)
 
 # Create your models here.
