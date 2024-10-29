@@ -8,6 +8,12 @@ class School(models.Model):
 
     school_address = models.CharField("Address", max_length=256, blank=False)
 
+
+    def __str__(self):
+        return f"{self.school_name}"
+
+class Advisor(models.Model):
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
     advisor_name = models.CharField("Advisor Name", max_length=256, blank=False)
     advisor_email = models.CharField("Advisor Email", max_length=256, blank=False)
     advisor_phone_number = models.CharField("Advisor Phone Number", max_length=256, blank=False)
@@ -15,9 +21,6 @@ class School(models.Model):
     advisor_emergency_contact_phone = models.CharField("Emergency Contact Phone Number", max_length=256,
             blank=False)
 
-    def __str__(self):
-        return f"{self.school_name}"
-   
 
 class Team(models.Model):
     CATEGORIES = {
