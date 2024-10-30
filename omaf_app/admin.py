@@ -49,15 +49,14 @@ class StudentAdmin(admin.ModelAdmin):
 
             ]
 
-    @admin.display(description="Advisor")
+    # @admin.display()
+
     def advisor(self, obj):
         return f"{obj.team.advisor}"
 
-    @admin.display(description="Team")
     def team(self, obj):
         return f"{obj.team.team_name}"
 
-    @admin.display(description="School")
     def school(self, obj):
         return f"{obj.team.advisor.school.school_name}"
 
