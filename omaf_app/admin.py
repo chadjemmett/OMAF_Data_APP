@@ -21,6 +21,10 @@ class AdvisorAdmin(admin.ModelAdmin):
             "school__principal"
             ]
 
+class StudentInline(admin.TabularInline):
+    model = Student
+
+
 class TeamAdmin(admin.ModelAdmin):
 
     list_display = [
@@ -30,11 +34,14 @@ class TeamAdmin(admin.ModelAdmin):
             "place",
             "advisor__advisor_name",
             "onsite_competition",
-
     ]
+
+    inlines = [StudentInline]
+
 
     list_editable = ["place"]
     ordering = ["category", "advisor__school__school_name", "team_name"]
+
 
 
 
@@ -59,6 +66,7 @@ class StudentAdmin(admin.ModelAdmin):
 
     def school(self, obj):
         return f"{obj.team.advisor.school.school_name}"
+
 
 admin.site.register(School, SchoolAdmin)
 admin.site.register(Advisor, AdvisorAdmin)
