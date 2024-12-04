@@ -29,18 +29,37 @@ class TeamAdmin(admin.ModelAdmin):
 
     list_display = [
             "category",
-            "advisor__school__school_name",
+            "school",
             "team_name",
-            "place",
-            "advisor__advisor_name",
+            "students",
+            "advisor",
             "onsite_competition",
+            "place",
     ]
+
+    list_display_links = [
+            "school",
+            "team_name",
+            "advisor",
+            "onsite_competition",
+
+            ]
 
     inlines = [StudentInline]
 
 
     list_editable = ["place"]
     ordering = ["category", "advisor__school__school_name", "team_name"]
+
+    def school(self, obj):
+        return f"{obj.advisor.school}"
+
+    def advisor(self, obj):
+        return f"{obj.advisor.first_name} {obj.advisor.last_name}"
+
+    def students(self, obj):
+        students = obj.student_set.all()
+        return ", ".join([x.student_name for x in students])
 
 
 

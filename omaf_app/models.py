@@ -78,4 +78,7 @@ class Student(models.Model):
     student_name = models.CharField("Student Name", max_length=256, blank=False)
     shirt_size = models.CharField(choices=T_SHIRT_SIZES, blank=True, max_length=256)
 
+    def __str__(self):
+        return self.student_name
+
 # Create your models here.
