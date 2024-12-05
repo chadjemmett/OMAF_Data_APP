@@ -18,8 +18,15 @@ class AdvisorAdmin(admin.ModelAdmin):
             "advisor_name",
             "advisor_phone_number",
             "school__school_name",
-            "school__principal"
+            "school__principal",
+            "teams",
+
             ]
+
+    def teams(self, obj):
+        advisor_teams = Team.objects.filter(advisor_id=obj.id)
+        return ", ".join([x.team_name for x in advisor_teams])
+
 
 class StudentInline(admin.TabularInline):
     model = Student
