@@ -1,0 +1,27 @@
+
+<table>
+    <tr>
+        <th>Category</th>
+        <th> School </th>
+        <th> Team Name</th>
+        <th> Team Members</th>
+        <th> Place </th>
+
+    </tr>
+{% for t in teams_list %}
+
+
+<tr>
+    <td>{{ t.category }}</td>
+    <td>{{ t.school }}</td>
+    <td>{{ t.team_name }}</td>
+    <td>{{ t.advisor }}</td>
+    <td>{{ t.place }}</td>
+</tr>
+
+
+{% endfor %}
+
+</table>
+
+

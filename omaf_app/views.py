@@ -50,8 +50,14 @@ def export(requests):
     return response
 
 
-def download(response):
-    teams = Team.objects.where(place=True)
+def download(request):
+
+    teams = Team.objects.exclude(place=None)
+    context = {"teams_list": teams}
+    return render (request, "omaf_app/downloads.html", context)
+
+
+    # teams = Team.objects.where(place=True)
     
 
 
