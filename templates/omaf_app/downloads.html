@@ -1,10 +1,14 @@
 
+<button>
+    <a href="{% url 'csv' %}">Download CSV</a>
+</button>
 <table>
     <tr>
         <th>Category</th>
         <th> School </th>
         <th> Team Name</th>
         <th> Team Members</th>
+        <th> Advisor </th>
         <th> Place </th>
 
     </tr>
@@ -12,11 +16,13 @@
 
 
 <tr>
-    <td>{{ t.category }}</td>
-    <td>{{ t.school }}</td>
-    <td>{{ t.team_name }}</td>
-    <td>{{ t.advisor }}</td>
-    <td>{{ t.place }}</td>
+    <td>{{ t.team.category }}</td>
+    <td>{{ t.team.advisor.school }}</td>
+    <td>{{ t.team.team_name }}</td>
+    <td>{{ t.students }} </td>
+    <td>{{ t.team.advisor }}</td>
+    <td>{{ t.team.place }}</td>
+
 </tr>
 
 

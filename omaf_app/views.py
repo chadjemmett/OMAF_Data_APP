@@ -45,15 +45,21 @@ def export(requests):
             CATEGORIES[t.category],  
             t.advisor.school,
             t.team_name,
-            ", ".join([x.student_name for x in students])
+            ", ".join([x.student_name for x in students]),
+            t.place
         ])
     return response
 
 
 def download(request):
+    team_data = []
+    teams = Team.objects.all().order_by('place').reverse()
+    for t in teams:
+        t.category = CATEGORIES[t.category]
+        members = Student.objects.filter(team_id=t.id)
+        team_data.append({'team': t, 'students': ", ".join([x.student_name for x in members]) })
 
-    teams = Team.objects.exclude(place=None)
-    context = {"teams_list": teams}
+    context = {"teams_list": team_data}
     return render (request, "omaf_app/downloads.html", context)
 
 
